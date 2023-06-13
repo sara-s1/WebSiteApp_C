@@ -6,7 +6,7 @@ Created on  30 -4-2023
 """
 
 import streamlit as st
-import tensorflow as tf
+
 
 st.write("""
 # Her2Inhibitors
