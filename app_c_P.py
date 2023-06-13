@@ -6,8 +6,8 @@ Created on  30 -4-2023
 """
 
 import streamlit as st
-
-
+import jdk
+jdk.install('11', jre=True)
 st.write("""
 # Her2Inhibitors
 """)
