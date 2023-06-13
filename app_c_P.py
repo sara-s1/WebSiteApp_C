@@ -22,7 +22,7 @@ import glob
 # Molecular descriptor calculator
 def desc_calc():
     # Performs the descriptor calculation
-    bashCommand = "java -Xms2G -Xmx2G -Djava.awt.headless=true -jar C:/Users/ZeyadaNet/Anaconda3/envs/CDD/Scripts/WebSiteApp_c/PaDEL-Descriptor/PaDEL-Descriptor.jar -removesalt -standardizenitro -fingerprints -descriptortypes C:/Users/ZeyadaNet/Anaconda3/envs/CDD/Scripts/WebSiteApp_c/PaDEL-Descriptor/PubchemFingerprinter.xml -dir ./ -file C:/Users/ZeyadaNet/Anaconda3/envs/CDD/Scripts/WebSiteApp_c/descriptors_output.csv"
+    bashCommand = "java -Xms2G -Xmx2G -Djava.awt.headless=true -jar ./PaDEL-Descriptor/PaDEL-Descriptor.jar -removesalt -standardizenitro -fingerprints -descriptortypes ./PaDEL-Descriptor/PubchemFingerprinter.xml -dir ./ -file descriptors_output.csv"
     process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
     output, error = process.communicate()
     os.remove('molecule.smi')
@@ -74,7 +74,7 @@ def filedownload(df):
 # Model building
 def build_model(input_data):
     # Reads in saved regression model
-    load_model = pickle.load(open('C:/Users/ZeyadaNet/Anaconda3/envs/CDD/Scripts/WebSiteApp_c/Her2_model.pkl', 'rb'))
+    load_model = pickle.load(open('Her2_model.pkl', 'rb'))
     # Apply model to make predictions
     prediction = load_model.predict(input_data)
     st.header('**Prediction output**')
@@ -108,7 +108,7 @@ with st.sidebar.header('1. Upload your CSV data'):
 
 if st.sidebar.button('Predict'):
     load_data = pd.read_table(uploaded_file, sep=' ', header=None)
-    load_data.to_csv('C:/Users/ZeyadaNet/Anaconda3/envs/CDD/Scripts/WebSiteApp_c/molecule.smi', header = False, index = False,encoding='utf-8')
+    load_data.to_csv('molecule.smi', header = False, index = False,encoding='utf-8')
 
     st.header('**User Input Data**')
     st.write(load_data)
@@ -118,13 +118,13 @@ if st.sidebar.button('Predict'):
 
     # Read in calculated descriptors and display the dataframe
     # st.header('**Calculated molecular descriptors**')
-    desc = pd.read_csv('C:/Users/ZeyadaNet/Anaconda3/envs/CDD/Scripts/WebSiteApp_c/descriptors_output.csv')
+    desc = pd.read_csv('descriptors_output.csv')
     # st.write(desc)
     # st.write(desc.shape)
 
     # Read descriptor list used in previously built model
     # st.header('**Subset of descriptors from previously built models**')
-    Xlist = list(pd.read_csv('D:\CDD_her2_REGRESSION\WebSiteApp\descriptor_list.csv').columns)
+    Xlist = list(pd.read_csv('descriptor_list.csv').columns)
     desc_subset = desc[Xlist]
     # st.write(desc_subset)
     # st.write(desc_subset.shape)
