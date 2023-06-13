@@ -103,7 +103,7 @@ This website allows you to predict Bioactivity towards inhibting the `Human epid
 with st.sidebar.header('1. Upload your CSV data'):
     uploaded_file = st.sidebar.file_uploader("Upload your input file", type=['txt'])
     st.sidebar.markdown("""
-[Example input file](https://raw.githubusercontent.com/dataprofessor/bioactivity-prediction-app/main/example_acetylcholinesterase.txt)
+[Example input file](https://github.com/sara-s1/WebSiteApp_C/blob/main/Lapatinib_TykerbH_.txt)
 """)
 
 if st.sidebar.button('Predict'):
