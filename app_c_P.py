@@ -26,33 +26,14 @@ def desc_calc():
     output, error = process.communicate()
     os.remove('molecule.smi')
 def desc_calc1():
-    # List and sort fingerprint XML files
-    xml_files = glob.glob("D:/CDD_her2/fingerprints_xml/*.xml")
-    xml_files.sort()
-    print(xml_files)
-    FP_list = ['AtomPairs2DFingerprintCount',
- 'AtomPairs2DFingerprinter',
- 'EStateFingerprinter',
- 'ExtendedFingerprinter',
- 'Fingerprinter',
- 'GraphOnlyFingerprinter',
- 'KlekotaRothFingerprintCount',
- 'KlekotaRothFingerprinter',
- 'MACCSFingerprinter',
- 'PubchemFingerprinter',
- 'SubstructureFingerprintCount',
- 'SubstructureFingerprinter']
-    fp = dict(zip(FP_list, xml_files))
-    print(fp)
-   
    
     fingerprint = 'PubchemFingerprinter'
 
     fingerprint_output_file = ''.join([fingerprint,'.csv']) #Substructure.csv
     fingerprint_descriptortypes = 'PubchemFingerprinter.xml'
     
-    padeldescriptor(mol_dir='C:/Users/ZeyadaNet/Anaconda3/envs/CDD/Scripts/WebSiteApp_c/molecule.smi', 
-                    d_file='C:/Users/ZeyadaNet/Anaconda3/envs/CDD/Scripts/WebSiteApp_c/descriptors_output.csv', #'Substructure.csv'
+    padeldescriptor(mol_dir='molecule.smi', 
+                    d_file='descriptors_output.csv', #'Substructure.csv'
                     #descriptortypes='SubstructureFingerprint.xml', 
                     descriptortypes= fingerprint_descriptortypes,
                     detectaromaticity=True,
@@ -113,7 +94,7 @@ if st.sidebar.button('Predict'):
     st.write(load_data)
 
     with st.spinner("Calculating  in progress..."):
-        desc_calc()
+        desc_calc1()
 
     # Read in calculated descriptors and display the dataframe
     # st.header('**Calculated molecular descriptors**')
