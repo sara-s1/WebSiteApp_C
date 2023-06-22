@@ -6,5 +6,6 @@ scikit_learn==0.23.1
 streamlit==1.20.0
 protobuf~=3.19.0
 install-jdk
+Java JRE 6
 
 
