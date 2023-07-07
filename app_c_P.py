@@ -94,7 +94,7 @@ if st.sidebar.button('Predict'):
     st.write(load_data)
 
     with st.spinner("Calculating  in progress..."):
-        desc_calc()
+        desc_calc1()
 
     # Read in calculated descriptors and display the dataframe
     # st.header('**Calculated molecular descriptors**')
